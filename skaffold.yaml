@@ -1,0 +1,14 @@
+apiVersion: skaffold/v4beta10
+kind: Config
+metadata:
+  name: gad-store
+build:
+  artifacts:
+    - image: shabindocker/auth
+      context: backend/auth
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - backend/infra/k8s/auth-depl.yaml
+    - backend/infra/k8s/ingress-srv.yaml
