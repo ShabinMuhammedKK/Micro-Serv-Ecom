@@ -32,7 +32,7 @@ const start = async () => {
 
 
     await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
-    console.log("Connected to MongoDB !!!");
+    console.log("Connected to MongoDB from auth !!!");
 
 
     const port = process.env.PORT || 3000;
