@@ -1,17 +1,30 @@
 import express from "express";
 import { userLogin, userLogout, currentUser, userSignup } from "./routes";
 import mongoose from 'mongoose';
+import session from "express-session";
+require('dotenv').config();
+
+const sessionSecret = process.env.SESSION_SECRET;
+interface SessionInterface {
+  secret:string;
+  resave:boolean;
+  saveUninitialized:boolean;
+}
 
 const start = async () => {
   try {
-    // Initialize Express app
     const app = express();
 
-    // Middleware
+
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
-    // Mount routes
+    app.use(session ({
+      secret: sessionSecret, 
+      resave: false,
+      saveUninitialized: true
+  } as SessionInterface));
+
     app.use(userLogin);
     app.use(userLogout);
     app.use(currentUser);
