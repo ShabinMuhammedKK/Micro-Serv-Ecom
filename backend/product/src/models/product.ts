@@ -4,7 +4,7 @@ interface ProductAttrs{
     name:string;
     description:string;
     price:number;
-    catergory:string;
+    category:string;
 }
 
 interface ProductModel extends Model<ProductDoc> {
@@ -12,8 +12,10 @@ interface ProductModel extends Model<ProductDoc> {
 }
 
 interface ProductDoc extends Document {
-  email: string;
-  password: string;
+  name: string;
+  description: string;
+  price: number;
+  category: string;
 }
 
 const productSchema = new Schema({
@@ -29,7 +31,7 @@ const productSchema = new Schema({
     type: Number,
     required: true,
   },
-  catergory: {
+  category: {
     type: String,
     required: true,
   },

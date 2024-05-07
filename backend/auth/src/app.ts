@@ -20,7 +20,7 @@ const start = async () => {
     app.use(express.urlencoded({ extended: true }));
 
     app.use(session ({
-      secret: sessionSecret, 
+      secret: "session123", 
       resave: false,
       saveUninitialized: true
   } as SessionInterface));
